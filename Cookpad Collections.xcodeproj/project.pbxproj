@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		E4AD239D27835CA900477E7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD239C27835CA900477E7A /* AppDelegate.swift */; };
 		E4AD239F27835CA900477E7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD239E27835CA900477E7A /* SceneDelegate.swift */; };
-		E4AD23A127835CA900477E7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD23A027835CA900477E7A /* ViewController.swift */; };
+		E4AD23A127835CA900477E7A /* RecipeCollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD23A027835CA900477E7A /* RecipeCollectionsViewController.swift */; };
 		E4AD23A427835CA900477E7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AD23A227835CA900477E7A /* Main.storyboard */; };
 		E4AD23A627835CAF00477E7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4AD23A527835CAF00477E7A /* Assets.xcassets */; };
 		E4AD23A927835CAF00477E7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AD23A727835CAF00477E7A /* LaunchScreen.storyboard */; };
+		E4AD23B12783ADEE00477E7A /* RecipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD23B02783ADEE00477E7A /* RecipeListViewController.swift */; };
+		E4AD23B32783AE1A00477E7A /* RecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD23B22783AE1A00477E7A /* RecipeDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E4AD239927835CA900477E7A /* Cookpad Collections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cookpad Collections.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AD239C27835CA900477E7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4AD239E27835CA900477E7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E4AD23A027835CA900477E7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E4AD23A027835CA900477E7A /* RecipeCollectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionsViewController.swift; sourceTree = "<group>"; };
 		E4AD23A327835CA900477E7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4AD23A527835CAF00477E7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4AD23A827835CAF00477E7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4AD23AA27835CAF00477E7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4AD23B02783ADEE00477E7A /* RecipeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewController.swift; sourceTree = "<group>"; };
+		E4AD23B22783AE1A00477E7A /* RecipeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,23 @@
 			children = (
 				E4AD239C27835CA900477E7A /* AppDelegate.swift */,
 				E4AD239E27835CA900477E7A /* SceneDelegate.swift */,
-				E4AD23A027835CA900477E7A /* ViewController.swift */,
+				E4AD23B42783AE3D00477E7A /* Controllers */,
 				E4AD23A227835CA900477E7A /* Main.storyboard */,
 				E4AD23A527835CAF00477E7A /* Assets.xcassets */,
 				E4AD23A727835CAF00477E7A /* LaunchScreen.storyboard */,
 				E4AD23AA27835CAF00477E7A /* Info.plist */,
 			);
 			path = "Cookpad Collections";
+			sourceTree = "<group>";
+		};
+		E4AD23B42783AE3D00477E7A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4AD23A027835CA900477E7A /* RecipeCollectionsViewController.swift */,
+				E4AD23B02783ADEE00477E7A /* RecipeListViewController.swift */,
+				E4AD23B22783AE1A00477E7A /* RecipeDetailsViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4AD23A127835CA900477E7A /* ViewController.swift in Sources */,
+				E4AD23B12783ADEE00477E7A /* RecipeListViewController.swift in Sources */,
+				E4AD23A127835CA900477E7A /* RecipeCollectionsViewController.swift in Sources */,
 				E4AD239D27835CA900477E7A /* AppDelegate.swift in Sources */,
+				E4AD23B32783AE1A00477E7A /* RecipeDetailsViewController.swift in Sources */,
 				E4AD239F27835CA900477E7A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
