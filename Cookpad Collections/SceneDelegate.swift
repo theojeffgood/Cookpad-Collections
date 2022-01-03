@@ -18,8 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
       guard let _ = (scene as? UIWindowScene) else { return }
       
+      let recipeManager = RecipeManager()
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       guard let navigationController = storyboard.instantiateViewController(withIdentifier: "navigationController") as? UINavigationController else { fatalError("Cannot load app.") }
+      if let top = navigationController.viewControllers.first as? RecipeManagerProtocol{
+         top.setRecipeManager(recipeManager: recipeManager)
+      }
       
       window?.overrideUserInterfaceStyle = .light //this disables dark mode across the app
       window?.rootViewController = navigationController
