@@ -53,7 +53,7 @@ extension RecipeCollectionsViewController{
 
          let imageRequest = ImageRequest(url: URL(string: recipeCollection.preview_image_urls.first ?? ""), processors: NukeManager.shared.resizedImageProcessors)
          Nuke.loadImage(with: imageRequest, into: recipeCollectionCell.recipeCollectionImage)
-         recipeCollectionCell.configure(with: recipeCollection)
+         recipeCollectionCell.configure(title: recipeCollection.title, description: recipeCollection.description)
          
          recipeCollectionCell.shadowDecorate()
          return recipeCollectionCell

@@ -7,18 +7,16 @@
 
 import UIKit
 
-class RecipeDetailsCell: UICollectionViewCell, SelfConfiguringCell {
+class RecipeDetailsCell: UICollectionViewCell {
    static var reuseIdentifier = K.CellIdentifiers.recipeDetailsCellIdentifier
    
-   //SOLUTION FOR WordWrapTextViewLabel INSTEAD OF UILABEL IS DUE TO FUCKED WORD-WRAP BEHAVIOR FROM APPLE IMPLEMENTED IN IOS11. IT WAS ADAPTED FROM STACKOVERFLOW: https://stackoverflow.com/a/56871964/13551385
+   // Using WordWrapTextViewLabel instead of UILabel in order to overcome default iOS behavior that awkwardly wraps text to avoid lines with only one word. That's not a concern for this app.
+   // Solution was adapted from StackOverflow: https://stackoverflow.com/a/56871964/13551385
    let recipeTitle = WordWrapTextViewLabel()
    
-   func configure(with recipeDataPoint: String) {
-         setupCustomTextView()
-      self.recipeTitle.backgroundColor = nil
-         self.recipeTitle.text = recipeDataPoint
-//         self.recipeTitle.font = UIFont(name: K.BrandFonts.recipeTitleMediumFont, size: 22)
-//      self.recipeTitle.textColor = .black
+   override func prepareForReuse() {
+      super.prepareForReuse()
+      recipeTitle.text.removeAll()
    }
    
    func setupCustomTextView(){
@@ -33,7 +31,34 @@ class RecipeDetailsCell: UICollectionViewCell, SelfConfiguringCell {
    }
 }
 
-//SOLUTION FOR WordWrapTextViewLabel INSTEAD OF UILABEL IS DUE TO FUCKED WORD-WRAP BEHAVIOR FROM APPLE IMPLEMENTED IN IOS11. IT WAS ADAPTED FROM STACKOVERFLOW: https://stackoverflow.com/a/56871964/13551385
+//Different configure methods are used depending on the purpose of the cell.
+extension RecipeDetailsCell{
+   
+   func configureTitle(with recipeDataPoint: String) {
+      setupCustomTextView()
+      self.recipeTitle.backgroundColor = nil
+      self.recipeTitle.text = recipeDataPoint
+      self.recipeTitle.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+   }
+   
+   func configureFacts(with recipeDataPoint: String) {
+      setupCustomTextView()
+      self.recipeTitle.backgroundColor = nil
+      self.recipeTitle.text = "Recipe by: "
+      self.recipeTitle.text.append(recipeDataPoint)
+      self.recipeTitle.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+   }
+   
+   func configureStepsOrIngredients(with recipeDataPoint: String) {
+      setupCustomTextView()
+      self.recipeTitle.backgroundColor = nil
+      self.recipeTitle.text = recipeDataPoint
+      self.recipeTitle.font = UIFont.systemFont(ofSize: 20)
+   }
+}
+
+// Using WordWrapTextViewLabel instead of UILabel in order to overcome default iOS behavior that awkwardly wraps text to avoid lines with only one word. That's not a concern for this app.
+// Solution was adapted from StackOverflow: https://stackoverflow.com/a/56871964/13551385
 class WordWrapTextViewLabel: UITextView {
 
     override init(frame: CGRect, textContainer: NSTextContainer?) {

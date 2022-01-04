@@ -23,6 +23,7 @@ class RecipeListViewController: UIViewController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      navigationController?.setBackButtonTitle(to: "Cuisines")
       setupRecipesList()
       loadRecipes()
    }
@@ -94,6 +95,7 @@ extension RecipeListViewController: UICollectionViewDelegate{
       let imageRequest = ImageRequest(url: URL(string: selectedRecipe.image_url)!, processors: NukeManager.shared.resizedImageProcessors)
       Nuke.loadImage(with: imageRequest, into: recipeDetailsViewController.recipeHeaderImageView)
       
+      recipeDetailsViewController.layoutManager = self.layoutManager
       recipeDetailsViewController.usersRecipe = selectedRecipe
 
       self.navigationController?.pushViewController(recipeDetailsViewController, animated: true)

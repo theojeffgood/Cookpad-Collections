@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Recipe Collections-->
+        <!--Choose your Cuisine-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RecipeCollectionsViewController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,17 +27,17 @@
                                 <rect key="frame" x="0.0" y="113" width="414" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DcY-NC-qQr">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="349" height="503"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipeCollectionsCellIdentifier" id="3jM-Dj-QLq" userLabel="Recipe Collection Cell" customClass="RecipeCollectionCell" customModule="Cookpad_Collections" customModuleProvider="target">
-                                        <rect key="frame" x="32.5" y="0.0" width="349" height="458"/>
+                                        <rect key="frame" x="32.5" y="0.0" width="349" height="503"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jql-RW-uqu">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="458"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="503"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-uK-gXQ" userLabel="Recipe Collection Image">
@@ -52,11 +52,17 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Saq-mn-6l0" userLabel="Recipe Collection Title">
-                                                    <rect key="frame" x="0.0" y="344" width="349" height="114"/>
+                                                    <rect key="frame" x="0.0" y="344" width="349" height="159"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Top Recipes Collection" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Po8-kz-7B7" userLabel="Collection Title">
-                                                            <rect key="frame" x="14" y="30" width="325" height="59"/>
-                                                            <fontDescription key="fontDescription" name="Cinzel-Medium" family="Cinzel" pointSize="22"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" verticalCompressionResistancePriority="751" text="Top Recipes Collection" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Po8-kz-7B7" userLabel="Collection Title">
+                                                            <rect key="frame" x="14" y="45" width="325" height="26.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnT-Gs-LLh" userLabel="Collection Description">
+                                                            <rect key="frame" x="15" y="86.5" width="324" height="27.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -64,9 +70,12 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="Po8-kz-7B7" firstAttribute="leading" secondItem="Saq-mn-6l0" secondAttribute="leading" constant="14" id="B7e-zv-2xt"/>
-                                                        <constraint firstItem="Po8-kz-7B7" firstAttribute="top" secondItem="Saq-mn-6l0" secondAttribute="top" constant="30" id="C1d-KD-4si"/>
+                                                        <constraint firstItem="Po8-kz-7B7" firstAttribute="top" secondItem="Saq-mn-6l0" secondAttribute="top" constant="45" id="C1d-KD-4si"/>
+                                                        <constraint firstItem="BnT-Gs-LLh" firstAttribute="leading" secondItem="Saq-mn-6l0" secondAttribute="leading" constant="15" id="J14-Bh-hqp"/>
+                                                        <constraint firstItem="BnT-Gs-LLh" firstAttribute="top" secondItem="Po8-kz-7B7" secondAttribute="bottom" constant="15" id="RJK-Bz-CTK"/>
                                                         <constraint firstAttribute="trailing" secondItem="Po8-kz-7B7" secondAttribute="trailing" constant="10" id="aPA-gv-JJe"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Po8-kz-7B7" secondAttribute="bottom" constant="25" id="ri5-k4-5By"/>
+                                                        <constraint firstAttribute="bottom" secondItem="BnT-Gs-LLh" secondAttribute="bottom" constant="45" id="fO7-if-KAE"/>
+                                                        <constraint firstAttribute="trailing" secondItem="BnT-Gs-LLh" secondAttribute="trailing" constant="10" id="qz9-ao-YTs"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -85,8 +94,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="Saq-mn-6l0" secondAttribute="bottom" id="grq-TW-IzD"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="349" height="458"/>
+                                        <size key="customSize" width="349" height="503"/>
                                         <connections>
+                                            <outlet property="recipeCollectionDescription" destination="BnT-Gs-LLh" id="tDU-ic-OSl"/>
                                             <outlet property="recipeCollectionImage" destination="bZr-uK-gXQ" id="DBi-l1-frd"/>
                                             <outlet property="recipeCollectionTitle" destination="Po8-kz-7B7" id="bm9-Fx-MUU"/>
                                         </connections>
@@ -103,7 +113,7 @@
                             <constraint firstItem="b2l-HW-vCJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="jTY-pP-MDV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Recipe Collections" largeTitleDisplayMode="always" id="CO3-DG-6qO"/>
+                    <navigationItem key="navigationItem" title="Choose your Cuisine" largeTitleDisplayMode="always" id="CO3-DG-6qO"/>
                     <connections>
                         <outlet property="recipeCollectionsList" destination="b2l-HW-vCJ" id="WUE-Yp-bdm"/>
                         <segue destination="it8-G1-RJv" kind="show" identifier="showRecipesSegue" id="Qgd-ct-ZAd"/>
@@ -200,9 +210,7 @@
                             <constraint firstItem="wTI-tI-xNE" firstAttribute="top" secondItem="KbD-Af-VSH" secondAttribute="top" id="yD2-Qp-zXc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Recipes" id="Pxd-Hc-Peg">
-                        <barButtonItem key="backBarButtonItem" title="Recipe Collections" id="mmc-yZ-ldZ"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Recipes" id="Pxd-Hc-Peg"/>
                     <connections>
                         <outlet property="recipesList" destination="wTI-tI-xNE" id="2fc-Ew-OZS"/>
                         <segue destination="WaQ-74-JXG" kind="show" identifier="showRecipeDetailsSegue" id="faL-7h-Vay"/>
@@ -259,10 +267,10 @@
             </objects>
             <point key="canvasLocation" x="2586.9565217391305" y="118.52678571428571"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Nav Bar Controller-->
         <scene sceneID="yRS-dG-XJC">
             <objects>
-                <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" id="3tT-G7-O9H" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" id="3tT-G7-O9H" customClass="CustomNavBarController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="fZY-Gd-1fy">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>

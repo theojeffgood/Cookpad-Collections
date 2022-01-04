@@ -14,7 +14,7 @@ class RecipeDetailsViewController: UIViewController {
    typealias DataSource = UICollectionViewDiffableDataSource<Section, String>
    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, String>
    private lazy var dataSource = makeDataSource()
-   var layoutManager: RecipeDetailsLayoutManager?
+   var layoutManager: RecipesLayoutManager!
    enum Section: String, CaseIterable {
       case title
       case facts
@@ -37,8 +37,8 @@ class RecipeDetailsViewController: UIViewController {
    
    override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-//      guard let customNavBarController = navigationController as? CustomNavBarController else { return }
-//      customNavBarController.setTransparentNavBar()
+      guard let customNavBarController = navigationController as? CustomNavBarController else { return }
+      customNavBarController.setTransparentNavBar()
    }
    
    override func viewDidAppear(_ animated: Bool) {
@@ -50,8 +50,8 @@ class RecipeDetailsViewController: UIViewController {
    
    override func viewWillDisappear(_ animated: Bool) {
       super.viewWillDisappear(animated)
-//      guard let customNavBarController = navigationController as? CustomNavBarController else { return }
-//      customNavBarController.setOpaqueNavBar()
+      guard let customNavBarController = navigationController as? CustomNavBarController else { return }
+      customNavBarController.setOpaqueNavBar()
    }
       
 //MARK: -- view functionality
@@ -59,10 +59,8 @@ class RecipeDetailsViewController: UIViewController {
    private func setupRecipeDetailsList() {
       recipeDetailsList.delegate = self
       recipeDetailsList.register(RecipeDetailsSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecipeDetailsSectionHeader.reuseIdentifier)
-      layoutManager = RecipeDetailsLayoutManager(recipeDetailsList: recipeDetailsList, topArea: recipeHeaderImageHeight)
-      recipeDetailsList.collectionViewLayout = layoutManager!.createCompositionalLayout()
-//         .getRecipeCollectionsLayout()
-      
+//      layoutManager = RecipeDetailsLayoutManager(topArea: recipeHeaderImageHeight)
+      recipeDetailsList.collectionViewLayout = layoutManager.createCompositionalLayout(withTopHeight: recipeHeaderImageHeight)
    }
    
    private func getDeviceMargins() {
@@ -91,19 +89,28 @@ class RecipeDetailsViewController: UIViewController {
       let titleView = UILabel()
       titleView.text = safeUsersRecipe.title
       titleView.textColor = .white
-//      titleView.font = UIFont(name: K.BrandFonts.recipeTitleMediumFont, size: 22)
+      titleView.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
       titleView.alpha = 0
       navigationItem.titleView = titleView
    }
    
-//MARK:-- RecipeCard CollectionView methods
+//MARK: -- RecipeCard CollectionView methods
    
    func makeDataSource() -> DataSource{
       let dataSource = DataSource(collectionView: recipeDetailsList, cellProvider: { collectionView, indexPath, string in
 
          guard let recipeDetailsCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeDetailsCell.reuseIdentifier, for: indexPath) as? RecipeDetailsCell else { return UICollectionViewCell() }
          
-         recipeDetailsCell.configure(with: string)
+         let recipeDetailsSection = Section.allCases[indexPath.section]
+         switch recipeDetailsSection {
+         case .title:
+            recipeDetailsCell.configureTitle(with: string)
+         case .facts:
+            recipeDetailsCell.configureFacts(with: string)
+         case .ingredients, .steps:
+            recipeDetailsCell.configureStepsOrIngredients(with: string)
+         }
+         
          return recipeDetailsCell
       })
       
@@ -140,7 +147,7 @@ class RecipeDetailsViewController: UIViewController {
 
 extension RecipeDetailsViewController: UICollectionViewDelegate {
 
-   // Scrollview Stretchy Header adapted from goldenlayouts.com/how-to-add-a-stretchy-header-to-your-apps/
+   //Scrroll offset is used to dynamically resize recipe image header, and set nav title accordingly
    func scrollViewDidScroll(_ scrollView: UIScrollView) {
       let y = -(scrollView.contentOffset.y)
       if abs(y) > view.frame.height{
@@ -149,7 +156,7 @@ extension RecipeDetailsViewController: UICollectionViewDelegate {
       let height = max(y + recipeHeaderImageHeight, totalTopArea)
       recipeHeaderImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: height)
       let newButtonTitle = height < (totalTopArea + 35) ? " " : "Recipes"
-//      navigationController?.setBackButtonTitle(to: newButtonTitle)
+      navigationController?.setBackButtonTitle(to: newButtonTitle)
       
       let dynamicAlpha: CGFloat = 1 + ((totalTopArea - recipeHeaderImageView.frame.height) / totalTopArea)
       navigationItem.titleView?.alpha = dynamicAlpha
