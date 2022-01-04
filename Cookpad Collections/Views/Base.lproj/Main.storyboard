@@ -113,10 +113,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="118.52678571428571"/>
         </scene>
-        <!--Recipe List View Controller-->
+        <!--Recipes-->
         <scene sceneID="ymI-yU-8cx">
             <objects>
-                <viewController id="it8-G1-RJv" customClass="RecipeListViewController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recipeListViewController" id="it8-G1-RJv" customClass="RecipeListViewController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="30M-sU-iGC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,7 +200,7 @@
                             <constraint firstItem="wTI-tI-xNE" firstAttribute="top" secondItem="KbD-Af-VSH" secondAttribute="top" id="yD2-Qp-zXc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Pxd-Hc-Peg"/>
+                    <navigationItem key="navigationItem" title="Recipes" id="Pxd-Hc-Peg"/>
                     <connections>
                         <outlet property="recipesList" destination="wTI-tI-xNE" id="2fc-Ew-OZS"/>
                         <segue destination="WaQ-74-JXG" kind="show" identifier="showRecipeDetailsSegue" id="faL-7h-Vay"/>

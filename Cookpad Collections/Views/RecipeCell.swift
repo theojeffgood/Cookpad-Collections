@@ -21,11 +21,11 @@ class RecipeCell: UICollectionViewCell {
 
 //MARK:-- CELL CONFIGURATION
 
-//extension RecipeCell {
-//   func configure(with recipe: Recipe) {
-//      self.recipeTitleLabel?.text = recipe.title
-//   }
-//}
+extension RecipeCell {
+   func configure(with recipe: Recipe) {
+      self.recipeTitle?.text = recipe.title
+   }
+}
 
 // MARK: - Shadows & Styles
 

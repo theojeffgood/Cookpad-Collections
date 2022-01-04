@@ -23,7 +23,6 @@ struct RecipeManager{
             if !recipesFromCloud.isEmpty{
                completion(recipesFromCloud)
             }
-            
          case .failure(let error):
             print("Failed to fetch recipes:", error)
          }

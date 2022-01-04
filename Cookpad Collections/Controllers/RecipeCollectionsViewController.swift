@@ -28,7 +28,7 @@ class RecipeCollectionsViewController: UIViewController {
    		
    private func setupRecipeCollectionsList() {
       recipeCollectionsList.delegate = self
-      recipeCollectionsList.collectionViewLayout = layoutManager.getRecipesLayout()
+      recipeCollectionsList.collectionViewLayout = layoutManager.getRecipeCollectionsLayout()
    }
 }
 
@@ -43,7 +43,7 @@ extension RecipeCollectionsViewController{
    func makeDataSource() -> DataSource {
       let dataSource = DataSource(collectionView: recipeCollectionsList, cellProvider: { (collectionView, indexPath, recipeCollection) -> UICollectionViewCell? in
 
-         guard let recipeCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: K.CellIdentifiers.recipeCollectionsCellIdentifier, for: indexPath) as? RecipeCollectionCell else { return UICollectionViewCell() }
+         guard let recipeCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeCollectionCell.reuseIdentifier, for: indexPath) as? RecipeCollectionCell else { return UICollectionViewCell() }
 
          let imageRequest = ImageRequest(url: URL(string: recipeCollection.preview_image_urls.first ?? ""), processors: NukeManager.shared.resizedImageProcessors)
          Nuke.loadImage(with: imageRequest, into: recipeCollectionCell.recipeCollectionImage)
@@ -70,13 +70,16 @@ extension RecipeCollectionsViewController: UICollectionViewDelegate{
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       guard let recipeCollection = dataSource.itemIdentifier(for: indexPath) else { return }
       
-//      let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//      guard let recipeCardViewController = storyboard.instantiateViewController(withIdentifier: "RecipeDetailViewController") as? RecipeCardViewController else { return }
-//
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      guard let recipeListViewController = storyboard.instantiateViewController(withIdentifier: "recipeListViewController") as? RecipeListViewController else { return }
+
 //      let imageRequest = ImageRequest(url: URL(string: selectedRecipe.imageUrl)!, processors: NukeManager.shared.resizedImageProcessors)
 //      Nuke.loadImage(with: imageRequest, into: recipeCardViewController.recipeHeaderImageView)
-//
-//      self.navigationController?.pushViewController(recipeCardViewController, animated: true)
+      recipeListViewController.recipeManager = self.recipeManager
+      recipeListViewController.layoutManager = self.layoutManager
+      recipeListViewController.selectedRecipeCollection = recipeCollection.id
+
+      self.navigationController?.pushViewController(recipeListViewController, animated: true)
    }
 }
 
@@ -88,18 +91,19 @@ extension RecipeCollectionsViewController: RecipeManagerProtocol{
 
 
 
+//MARK: -- Layout for Recipe Collections List
 
 class RecipesLayoutManager{
    
-   func getRecipesLayout() -> UICollectionViewLayout {
+   func getRecipeCollectionsLayout() -> UICollectionViewLayout {
       let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
          guard let self = self else { return nil }
-            return self.createLayout()
+            return self.createRecipeCollectionsLayout()
       }
       return layout
    }
    
-   func createLayout() -> NSCollectionLayoutSection {
+   func createRecipeCollectionsLayout() -> NSCollectionLayoutSection {
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(235))
       let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
 
@@ -114,4 +118,33 @@ class RecipesLayoutManager{
 
       return layoutSection
    }
+}
+
+//MARK: -- Layout for Recipes in a collection
+   
+extension RecipesLayoutManager{
+   
+   func getRecipesLayout() -> UICollectionViewLayout {
+      let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
+         guard let self = self else { return nil }
+            return self.createRecipesLayout()
+      }
+      return layout
+   }
+   
+   func createRecipesLayout() -> NSCollectionLayoutSection {
+      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(235))
+      let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+
+      let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(235))
+      let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitem: layoutItem, count: 2)
+      layoutGroup.interItemSpacing = .fixed(8)
+
+      let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+      layoutSection.interGroupSpacing = 20
+      layoutSection.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 10, bottom: 0, trailing: 10)
+
+      return layoutSection
+   }
+
 }

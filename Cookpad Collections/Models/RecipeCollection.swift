@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeCollection: Decodable, Hashable {
+struct RecipeCollection: Decodable, Hashable, Identifiable {
    
    var id: Int
    var title: String
