@@ -96,7 +96,7 @@ extension RecipesLayoutManager{
    private func createTitleSection(topHeight: CGFloat) -> NSCollectionLayoutSection {
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
       let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-      layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 25, leading: 15, bottom: 0, trailing: 15)
+      layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 35, leading: 15, bottom: 0, trailing: 15)
       
       let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
       let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
@@ -115,12 +115,12 @@ extension RecipesLayoutManager{
       let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
       layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0)
       
-      let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(40))
+      let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(65))
       let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
       
       let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
       layoutSection.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
-      layoutSection.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 75, trailing: 0)
+      layoutSection.contentInsets = NSDirectionalEdgeInsets(top: 25, leading: 0, bottom: 75, trailing: 0)
       
       let backgroundItem = NSCollectionLayoutDecorationItem.background(elementKind: "background")
       backgroundItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)

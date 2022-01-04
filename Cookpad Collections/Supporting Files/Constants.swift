@@ -20,4 +20,8 @@ struct K {
       static let showReipces         = "showRecipesSegue"
       static let showRecipeDetails   = "showRecipeDetailsSegue"
    }
+   
+   struct ErrorMessages{
+      static let noRecipeStep     = "Sorry there was an issue loading this step"
+   }
 }

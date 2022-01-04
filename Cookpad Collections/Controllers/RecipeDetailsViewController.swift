@@ -104,11 +104,14 @@ class RecipeDetailsViewController: UIViewController {
          let recipeDetailsSection = Section.allCases[indexPath.section]
          switch recipeDetailsSection {
          case .title:
-            recipeDetailsCell.configureTitle(with: string)
+            recipeDetailsCell.configureTitle(forTitle: string)
          case .facts:
-            recipeDetailsCell.configureFacts(with: string)
-         case .ingredients, .steps:
-            recipeDetailsCell.configureStepsOrIngredients(with: string)
+            recipeDetailsCell.configureFacts(forFact: string)
+         case .ingredients:
+            recipeDetailsCell.configureIngredients(forIngredient: string)
+         case .steps:
+            let stepId = indexPath.item + 1
+            recipeDetailsCell.configureSteps(forStep: string, stepId: stepId)
          }
          
          return recipeDetailsCell
@@ -129,7 +132,7 @@ class RecipeDetailsViewController: UIViewController {
    func displayRecipeDetails() {
 //      recipeCardCollectionView.resetEmptyState()
       guard let safeUsersRecipe = usersRecipe else { return }
-      var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
+      var snapshot = Snapshot()
       
       let safeFacts = safeUsersRecipe.user.name
       let safeIngredients = safeUsersRecipe.ingredients

@@ -34,25 +34,34 @@ class RecipeDetailsCell: UICollectionViewCell {
 //Different configure methods are used depending on the purpose of the cell.
 extension RecipeDetailsCell{
    
-   func configureTitle(with recipeDataPoint: String) {
+   func configureTitle(forTitle title: String) {
       setupCustomTextView()
       self.recipeTitle.backgroundColor = nil
-      self.recipeTitle.text = recipeDataPoint
+      self.recipeTitle.text = title
       self.recipeTitle.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
    }
    
-   func configureFacts(with recipeDataPoint: String) {
+   func configureFacts(forFact fact: String) {
       setupCustomTextView()
       self.recipeTitle.backgroundColor = nil
-      self.recipeTitle.text = "Recipe by: "
-      self.recipeTitle.text.append(recipeDataPoint)
+      self.recipeTitle.text = "🧑🏾‍🍳 Recipe by: "
+      self.recipeTitle.text.append(fact)
       self.recipeTitle.font = UIFont.systemFont(ofSize: 20, weight: .medium)
    }
    
-   func configureStepsOrIngredients(with recipeDataPoint: String) {
+   func configureIngredients(forIngredient ingredient: String) {
       setupCustomTextView()
       self.recipeTitle.backgroundColor = nil
-      self.recipeTitle.text = recipeDataPoint
+      self.recipeTitle.text = ingredient
+      self.recipeTitle.font = UIFont.systemFont(ofSize: 20)
+   }
+   
+   func configureSteps(forStep step: String, stepId: Int? = nil) {
+      guard let stepId = stepId else { recipeTitle.text = K.ErrorMessages.noRecipeStep; return }
+      setupCustomTextView()
+      self.recipeTitle.backgroundColor = nil
+      self.recipeTitle.text = "\(stepId)  -   "
+      self.recipeTitle.text.append(step)
       self.recipeTitle.font = UIFont.systemFont(ofSize: 20)
    }
 }
