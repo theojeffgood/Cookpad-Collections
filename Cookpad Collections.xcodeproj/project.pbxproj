@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		008A03D671B24AD90DD712BF /* Pods_Cookpad_Collections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490D7DA4BF0CAF886A656169 /* Pods_Cookpad_Collections.framework */; };
 		E4AD239D27835CA900477E7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD239C27835CA900477E7A /* AppDelegate.swift */; };
 		E4AD239F27835CA900477E7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD239E27835CA900477E7A /* SceneDelegate.swift */; };
 		E4AD23A127835CA900477E7A /* RecipeCollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD23A027835CA900477E7A /* RecipeCollectionsViewController.swift */; };
@@ -22,9 +23,13 @@
 		E4AD23C12783B8AA00477E7A /* RecipeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD23C02783B8AA00477E7A /* RecipeCollection.swift */; };
 		E4AD23C32783B91E00477E7A /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD23C22783B91E00477E7A /* RecipeManager.swift */; };
 		E4AD23C52783B93C00477E7A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD23C42783B93C00477E7A /* NetworkManager.swift */; };
+		E4AD23C82784735400477E7A /* NukeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD23C72784735400477E7A /* NukeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D3FF7147C526133F916016A /* Pods-Cookpad Collections.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cookpad Collections.debug.xcconfig"; path = "Target Support Files/Pods-Cookpad Collections/Pods-Cookpad Collections.debug.xcconfig"; sourceTree = "<group>"; };
+		490D7DA4BF0CAF886A656169 /* Pods_Cookpad_Collections.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cookpad_Collections.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B985E9D73E4C3AD5810C293C /* Pods-Cookpad Collections.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cookpad Collections.release.xcconfig"; path = "Target Support Files/Pods-Cookpad Collections/Pods-Cookpad Collections.release.xcconfig"; sourceTree = "<group>"; };
 		E4AD239927835CA900477E7A /* Cookpad Collections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cookpad Collections.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AD239C27835CA900477E7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4AD239E27835CA900477E7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +47,7 @@
 		E4AD23C02783B8AA00477E7A /* RecipeCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollection.swift; sourceTree = "<group>"; };
 		E4AD23C22783B91E00477E7A /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		E4AD23C42783B93C00477E7A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E4AD23C72784735400477E7A /* NukeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +55,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				008A03D671B24AD90DD712BF /* Pods_Cookpad_Collections.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B49B50525A9E302D3BE652B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				490D7DA4BF0CAF886A656169 /* Pods_Cookpad_Collections.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A2A51E69E01F5137FDAA981 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D3FF7147C526133F916016A /* Pods-Cookpad Collections.debug.xcconfig */,
+				B985E9D73E4C3AD5810C293C /* Pods-Cookpad Collections.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E4AD239027835CA900477E7A = {
 			isa = PBXGroup;
 			children = (
 				E4AD239B27835CA900477E7A /* Cookpad Collections */,
 				E4AD239A27835CA900477E7A /* Products */,
+				9A2A51E69E01F5137FDAA981 /* Pods */,
+				6B49B50525A9E302D3BE652B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +156,7 @@
 			children = (
 				E4AD23C22783B91E00477E7A /* RecipeManager.swift */,
 				E4AD23C42783B93C00477E7A /* NetworkManager.swift */,
+				E4AD23C72784735400477E7A /* NukeManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -141,9 +168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4AD23AD27835CAF00477E7A /* Build configuration list for PBXNativeTarget "Cookpad Collections" */;
 			buildPhases = (
+				4B983D81F3DDC91F5F0AEE62 /* [CP] Check Pods Manifest.lock */,
 				E4AD239527835CA900477E7A /* Sources */,
 				E4AD239627835CA900477E7A /* Frameworks */,
 				E4AD239727835CA900477E7A /* Resources */,
+				98F4CE3C130FDBBC79C5E7C8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,12 +229,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4B983D81F3DDC91F5F0AEE62 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cookpad Collections-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98F4CE3C130FDBBC79C5E7C8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cookpad Collections/Pods-Cookpad Collections-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cookpad Collections/Pods-Cookpad Collections-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cookpad Collections/Pods-Cookpad Collections-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E4AD239527835CA900477E7A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E4AD23C52783B93C00477E7A /* NetworkManager.swift in Sources */,
+				E4AD23C82784735400477E7A /* NukeManager.swift in Sources */,
 				E4AD23B12783ADEE00477E7A /* RecipeListViewController.swift in Sources */,
 				E4AD23C12783B8AA00477E7A /* RecipeCollection.swift in Sources */,
 				E4AD23A127835CA900477E7A /* RecipeCollectionsViewController.swift in Sources */,
@@ -360,6 +432,7 @@
 		};
 		E4AD23AE27835CAF00477E7A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D3FF7147C526133F916016A /* Pods-Cookpad Collections.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -390,6 +463,7 @@
 		};
 		E4AD23AF27835CAF00477E7A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B985E9D73E4C3AD5810C293C /* Pods-Cookpad Collections.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
