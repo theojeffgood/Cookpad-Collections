@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Nuke
 
 class RecipeCollectionsViewController: UIViewController {
 
@@ -17,37 +18,40 @@ class RecipeCollectionsViewController: UIViewController {
       case main
    }
    private lazy var dataSource = makeDataSource()
+   private var layoutManager = RecipesLayoutManager()
    
    override func viewDidLoad() {
       super.viewDidLoad()
       setupRecipeCollectionsList()
       loadRecipeCollections()
    }
-   
+   		
    private func setupRecipeCollectionsList() {
       recipeCollectionsList.delegate = self
-      recipeCollectionsList.collectionViewLayout = RecipesLayoutManager().getRecipesLayout()
+      recipeCollectionsList.collectionViewLayout = layoutManager.getRecipesLayout()
    }
-   
+}
+
+extension RecipeCollectionsViewController{
    private func loadRecipeCollections(){
       recipeManager.downloadDataFromCloud(of: RecipeCollection.self){ [weak self] recipeCollections in
          guard let self = self else { return }
          self.displayRecipeCollections(recipeCollections)
       }
    }
-
-}
-
-extension RecipeCollectionsViewController{
+   
    func makeDataSource() -> DataSource {
       let dataSource = DataSource(collectionView: recipeCollectionsList, cellProvider: { (collectionView, indexPath, recipeCollection) -> UICollectionViewCell? in
 
-         let recipeCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: K.CellIdentifiers.recipeCollectionsCellIdentifier, for: indexPath) as? RecipeCollectionCell
+         guard let recipeCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: K.CellIdentifiers.recipeCollectionsCellIdentifier, for: indexPath) as? RecipeCollectionCell else { return UICollectionViewCell() }
 
-         recipeCollectionCell?.configure(with: recipeCollection)
+         let imageRequest = ImageRequest(url: URL(string: recipeCollection.preview_image_urls.first ?? ""), processors: NukeManager.shared.resizedImageProcessors)
+         Nuke.loadImage(with: imageRequest, into: recipeCollectionCell.recipeCollectionImage)
+         recipeCollectionCell.configure(with: recipeCollection)
+         
+         recipeCollectionCell.shadowDecorate()
          return recipeCollectionCell
       })
-
       return dataSource
    }
 
@@ -74,7 +78,6 @@ extension RecipeCollectionsViewController: UICollectionViewDelegate{
 //
 //      self.navigationController?.pushViewController(recipeCardViewController, animated: true)
    }
-
 }
 
 extension RecipeCollectionsViewController: RecipeManagerProtocol{

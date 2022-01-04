@@ -18,7 +18,7 @@
         <!--Recipe Collections-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RecipeCollectionsViewController" customModule="Theos_Cookpad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RecipeCollectionsViewController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipeCollectionsCellIdentifier" id="3jM-Dj-QLq" userLabel="Recipe Collection Cell" customClass="RecipeCollectionCell" customModule="Theos_Cookpad" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipeCollectionsCellIdentifier" id="3jM-Dj-QLq" userLabel="Recipe Collection Cell" customClass="RecipeCollectionCell" customModule="Cookpad_Collections" customModuleProvider="target">
                                         <rect key="frame" x="32.5" y="0.0" width="349" height="458"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jql-RW-uqu">
@@ -55,7 +55,7 @@
                                                     <rect key="frame" x="0.0" y="280" width="349" height="178"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Top Recipes Collection" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Po8-kz-7B7" userLabel="Collection Title">
-                                                            <rect key="frame" x="14" y="142" width="325" height="26"/>
+                                                            <rect key="frame" x="14" y="15" width="325" height="153"/>
                                                             <fontDescription key="fontDescription" name="Cinzel-Medium" family="Cinzel" pointSize="22"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -64,6 +64,7 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="Po8-kz-7B7" firstAttribute="leading" secondItem="Saq-mn-6l0" secondAttribute="leading" constant="14" id="B7e-zv-2xt"/>
+                                                        <constraint firstItem="Po8-kz-7B7" firstAttribute="top" secondItem="Saq-mn-6l0" secondAttribute="top" constant="15" id="C1d-KD-4si"/>
                                                         <constraint firstAttribute="trailing" secondItem="Po8-kz-7B7" secondAttribute="trailing" constant="10" id="aPA-gv-JJe"/>
                                                         <constraint firstAttribute="bottom" secondItem="Po8-kz-7B7" secondAttribute="bottom" constant="10" id="ri5-k4-5By"/>
                                                     </constraints>
@@ -115,7 +116,7 @@
         <!--Recipe List View Controller-->
         <scene sceneID="ymI-yU-8cx">
             <objects>
-                <viewController id="it8-G1-RJv" customClass="RecipeListViewController" customModule="Theos_Cookpad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="it8-G1-RJv" customClass="RecipeListViewController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="30M-sU-iGC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +131,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipesCellIdentifier" id="ZMM-EX-VfY" userLabel="Recipe Cell" customClass="RecipeCell" customModule="Theos_Cookpad" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipesCellIdentifier" id="ZMM-EX-VfY" userLabel="Recipe Cell" customClass="RecipeCell" customModule="Cookpad_Collections" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="172.5" height="200.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mYy-oY-tVc">
@@ -212,7 +213,7 @@
         <!--Recipe Details View Controller-->
         <scene sceneID="ukM-ZH-A4v">
             <objects>
-                <viewController id="WaQ-74-JXG" customClass="RecipeDetailsViewController" customModule="Theos_Cookpad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WaQ-74-JXG" customClass="RecipeDetailsViewController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yfc-Xs-vV4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
