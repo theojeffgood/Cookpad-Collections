@@ -86,14 +86,16 @@ extension RecipeListViewController{
 extension RecipeListViewController: UICollectionViewDelegate{
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       collectionView.deselectItem(at: indexPath, animated: true)
-      guard let recipe = dataSource.itemIdentifier(for: indexPath) else { return }
+      guard let selectedRecipe = dataSource.itemIdentifier(for: indexPath) else { return }
       
-//      let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//      guard let recipeCardViewController = storyboard.instantiateViewController(withIdentifier: "RecipeDetailViewController") as? RecipeCardViewController else { return }
-//
-//      let imageRequest = ImageRequest(url: URL(string: selectedRecipe.imageUrl)!, processors: NukeManager.shared.resizedImageProcessors)
-//      Nuke.loadImage(with: imageRequest, into: recipeCardViewController.recipeHeaderImageView)
-//
-//      self.navigationController?.pushViewController(recipeCardViewController, animated: true)
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      guard let recipeDetailsViewController = storyboard.instantiateViewController(withIdentifier: "recipeDetailsViewController") as? RecipeDetailsViewController else { return }
+
+      let imageRequest = ImageRequest(url: URL(string: selectedRecipe.image_url)!, processors: NukeManager.shared.resizedImageProcessors)
+      Nuke.loadImage(with: imageRequest, into: recipeDetailsViewController.recipeHeaderImageView)
+      
+      recipeDetailsViewController.usersRecipe = selectedRecipe
+
+      self.navigationController?.pushViewController(recipeDetailsViewController, animated: true)
    }
 }

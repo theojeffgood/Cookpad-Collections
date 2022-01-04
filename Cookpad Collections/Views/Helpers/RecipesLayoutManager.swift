@@ -19,7 +19,7 @@ class RecipesLayoutManager{
       return layout
    }
    
-   func createRecipeCollectionsLayout() -> NSCollectionLayoutSection {
+   private func createRecipeCollectionsLayout() -> NSCollectionLayoutSection {
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(235))
       let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
 
@@ -48,7 +48,7 @@ extension RecipesLayoutManager{
       return layout
    }
    
-   func createRecipesLayout() -> NSCollectionLayoutSection {
+   private func createRecipesLayout() -> NSCollectionLayoutSection {
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(235))
       let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
 
@@ -57,7 +57,7 @@ extension RecipesLayoutManager{
       layoutGroup.interItemSpacing = .fixed(8)
 
       let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-      layoutSection.interGroupSpacing = 20
+      layoutSection.interGroupSpacing = 25
       layoutSection.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 10, bottom: 0, trailing: 10)
 
       return layoutSection

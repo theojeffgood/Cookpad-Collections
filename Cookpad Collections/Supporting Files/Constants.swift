@@ -12,6 +12,8 @@ struct K {
    struct CellIdentifiers {
       static let recipeCollectionsCellIdentifier    = "recipeCollectionsCellIdentifier"
       static let recipesCellIdentifier              = "recipesCellIdentifier"
+      static let recipeDetailsCellIdentifier        = "recipeDetailsCellIdentifier"
+      static let recipeDetailsHeaderIdentifier      = "recipeDetailsHeaderIdentifier"
    }
    
    struct ViewControllerSegues {
