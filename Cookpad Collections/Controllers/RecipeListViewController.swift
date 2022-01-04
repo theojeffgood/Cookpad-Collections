@@ -11,7 +11,6 @@ import Nuke
 class RecipeListViewController: UIViewController {
 
    @IBOutlet weak var recipesList: UICollectionView!
-//   var recipes: [Recipe]?
    var recipeManager: RecipeManager!
    var layoutManager: RecipesLayoutManager!
    var selectedRecipeCollection: RecipeCollection.ID?
@@ -27,6 +26,14 @@ class RecipeListViewController: UIViewController {
       setupRecipesList()
       loadRecipes()
    }
+   
+   func configureCriticalDependencies(layoutManager: RecipesLayoutManager,
+                                      recipeManager: RecipeManager,
+                                      selectedRecipeCollection: RecipeCollection.ID){
+      self.layoutManager = layoutManager
+      self.recipeManager = recipeManager
+      self.selectedRecipeCollection = selectedRecipeCollection
+   }
 
    private func setupRecipesList() {
       recipesList.delegate = self
@@ -40,8 +47,13 @@ extension RecipeListViewController{
       recipeManager.downloadDataFromCloud(collectionId: selectedRecipeCollection, of: Recipe.self){ [weak self] recipes in
          guard let self = self else { return }
          
+         let loadingViewController = LoadingViewController()
+         self.add(loadingViewController) // Display loading spinner
+         
          self.navigationItem.title = "\(recipes.count) Recipes"
          self.displayRecipes(recipes)
+         
+         loadingViewController.remove() // Stop & remove loading spinner
       }
    }
    
@@ -73,7 +85,8 @@ extension RecipeListViewController{
 
 extension RecipeListViewController: UICollectionViewDelegate{
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      guard let recipeCollection = dataSource.itemIdentifier(for: indexPath) else { return }
+      collectionView.deselectItem(at: indexPath, animated: true)
+      guard let recipe = dataSource.itemIdentifier(for: indexPath) else { return }
       
 //      let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //      guard let recipeCardViewController = storyboard.instantiateViewController(withIdentifier: "RecipeDetailViewController") as? RecipeCardViewController else { return }

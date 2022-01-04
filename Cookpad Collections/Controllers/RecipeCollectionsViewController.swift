@@ -36,7 +36,13 @@ extension RecipeCollectionsViewController{
    private func loadRecipeCollections(){
       recipeManager.downloadDataFromCloud(of: RecipeCollection.self){ [weak self] recipeCollections in
          guard let self = self else { return }
+         
+         let loadingViewController = LoadingViewController()
+         self.add(loadingViewController) // Display loading spinner
+         
          self.displayRecipeCollections(recipeCollections)
+         
+         loadingViewController.remove() // Stop & remove loading spinner
       }
    }
    
@@ -68,20 +74,21 @@ extension RecipeCollectionsViewController{
 
 extension RecipeCollectionsViewController: UICollectionViewDelegate{
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      collectionView.deselectItem(at: indexPath, animated: true)
       guard let recipeCollection = dataSource.itemIdentifier(for: indexPath) else { return }
       
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       guard let recipeListViewController = storyboard.instantiateViewController(withIdentifier: "recipeListViewController") as? RecipeListViewController else { return }
 
-//      let imageRequest = ImageRequest(url: URL(string: selectedRecipe.imageUrl)!, processors: NukeManager.shared.resizedImageProcessors)
-//      Nuke.loadImage(with: imageRequest, into: recipeCardViewController.recipeHeaderImageView)
-      recipeListViewController.recipeManager = self.recipeManager
-      recipeListViewController.layoutManager = self.layoutManager
-      recipeListViewController.selectedRecipeCollection = recipeCollection.id
+      recipeListViewController.configureCriticalDependencies(layoutManager: layoutManager,
+                                                             recipeManager: recipeManager,
+                                                             selectedRecipeCollection: recipeCollection.id)
 
       self.navigationController?.pushViewController(recipeListViewController, animated: true)
    }
 }
+
+//MARK: -- Dependency injecting the model controller, recipeManager
 
 extension RecipeCollectionsViewController: RecipeManagerProtocol{
    func setRecipeManager(recipeManager: RecipeManager) {
@@ -90,61 +97,3 @@ extension RecipeCollectionsViewController: RecipeManagerProtocol{
 }
 
 
-
-//MARK: -- Layout for Recipe Collections List
-
-class RecipesLayoutManager{
-   
-   func getRecipeCollectionsLayout() -> UICollectionViewLayout {
-      let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
-         guard let self = self else { return nil }
-            return self.createRecipeCollectionsLayout()
-      }
-      return layout
-   }
-   
-   func createRecipeCollectionsLayout() -> NSCollectionLayoutSection {
-      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(235))
-      let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-
-      let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(235))
-      let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
-//      layoutGroup.interItemSpacing = .fixed(8)
-      
-      let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-      layoutSection.interGroupSpacing = 12
-      layoutSection.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 12, bottom: 0, trailing: 10)
-      layoutSection.orthogonalScrollingBehavior = .groupPaging
-
-      return layoutSection
-   }
-}
-
-//MARK: -- Layout for Recipes in a collection
-   
-extension RecipesLayoutManager{
-   
-   func getRecipesLayout() -> UICollectionViewLayout {
-      let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
-         guard let self = self else { return nil }
-            return self.createRecipesLayout()
-      }
-      return layout
-   }
-   
-   func createRecipesLayout() -> NSCollectionLayoutSection {
-      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(235))
-      let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-
-      let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(235))
-      let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitem: layoutItem, count: 2)
-      layoutGroup.interItemSpacing = .fixed(8)
-
-      let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-      layoutSection.interGroupSpacing = 20
-      layoutSection.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 10, bottom: 0, trailing: 10)
-
-      return layoutSection
-   }
-
-}

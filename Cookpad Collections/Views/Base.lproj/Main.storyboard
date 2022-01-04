@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b2l-HW-vCJ" userLabel="Recipe Collections">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="113" width="414" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DcY-NC-qQr">
                                     <size key="itemSize" width="128" height="128"/>
@@ -41,9 +41,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-uK-gXQ" userLabel="Recipe Collection Image">
-                                                    <rect key="frame" x="0.0" y="0.0" width="349" height="285"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="349" height="349"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="bZr-uK-gXQ" secondAttribute="height" multiplier="1.225" id="4uB-3c-5NE"/>
+                                                        <constraint firstAttribute="width" secondItem="bZr-uK-gXQ" secondAttribute="height" id="4uB-3c-5NE"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -52,10 +52,10 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Saq-mn-6l0" userLabel="Recipe Collection Title">
-                                                    <rect key="frame" x="0.0" y="280" width="349" height="178"/>
+                                                    <rect key="frame" x="0.0" y="344" width="349" height="114"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Top Recipes Collection" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Po8-kz-7B7" userLabel="Collection Title">
-                                                            <rect key="frame" x="14" y="15" width="325" height="153"/>
+                                                            <rect key="frame" x="14" y="30" width="325" height="59"/>
                                                             <fontDescription key="fontDescription" name="Cinzel-Medium" family="Cinzel" pointSize="22"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -64,9 +64,9 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="Po8-kz-7B7" firstAttribute="leading" secondItem="Saq-mn-6l0" secondAttribute="leading" constant="14" id="B7e-zv-2xt"/>
-                                                        <constraint firstItem="Po8-kz-7B7" firstAttribute="top" secondItem="Saq-mn-6l0" secondAttribute="top" constant="15" id="C1d-KD-4si"/>
+                                                        <constraint firstItem="Po8-kz-7B7" firstAttribute="top" secondItem="Saq-mn-6l0" secondAttribute="top" constant="30" id="C1d-KD-4si"/>
                                                         <constraint firstAttribute="trailing" secondItem="Po8-kz-7B7" secondAttribute="trailing" constant="10" id="aPA-gv-JJe"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Po8-kz-7B7" secondAttribute="bottom" constant="10" id="ri5-k4-5By"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Po8-kz-7B7" secondAttribute="bottom" constant="25" id="ri5-k4-5By"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -100,7 +100,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b2l-HW-vCJ" secondAttribute="bottom" id="G6O-m0-D6d"/>
                             <constraint firstItem="b2l-HW-vCJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bC3-SX-fZa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b2l-HW-vCJ" secondAttribute="trailing" id="frh-Le-3UV"/>
-                            <constraint firstItem="b2l-HW-vCJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jTY-pP-MDV"/>
+                            <constraint firstItem="b2l-HW-vCJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="jTY-pP-MDV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Recipe Collections" largeTitleDisplayMode="always" id="CO3-DG-6qO"/>
@@ -200,7 +200,9 @@
                             <constraint firstItem="wTI-tI-xNE" firstAttribute="top" secondItem="KbD-Af-VSH" secondAttribute="top" id="yD2-Qp-zXc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Recipes" id="Pxd-Hc-Peg"/>
+                    <navigationItem key="navigationItem" title="Recipes" id="Pxd-Hc-Peg">
+                        <barButtonItem key="backBarButtonItem" title="Recipe Collections" id="mmc-yZ-ldZ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="recipesList" destination="wTI-tI-xNE" id="2fc-Ew-OZS"/>
                         <segue destination="WaQ-74-JXG" kind="show" identifier="showRecipeDetailsSegue" id="faL-7h-Vay"/>
