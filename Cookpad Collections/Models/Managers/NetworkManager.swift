@@ -52,9 +52,13 @@ struct NetworkManager {
             DispatchQueue.main.async {
                do {
                   let items = try JSONDecoder().decode(T.self, from: data!)
-                  completion(.success(items))
+                  DispatchQueue.main.async {
+                     completion(.success(items))
+                  }
                } catch let jsonError {
-                  completion(.failure(jsonError))
+                  DispatchQueue.main.async {
+                     completion(.failure(jsonError))
+                  }
                }
             }
          }

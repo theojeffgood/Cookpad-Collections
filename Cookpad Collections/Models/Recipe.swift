@@ -8,6 +8,7 @@
 import UIKit
 
 struct Recipe: Decodable {
+   
    var id: Int
    var title: String
    var story: String
@@ -31,10 +32,26 @@ struct Recipe: Decodable {
 //   }
 }
 
-struct User: Decodable{
+extension Recipe: Hashable{
+   static func == (lhs: Recipe, rhs: Recipe) -> Bool {
+      return lhs.id == rhs.id
+   }
    
+   func hash(into hasher: inout Hasher) {
+       hasher.combine(id)
+   }
+}
+
+
+
+
+
+struct User: Decodable{
+   var name: String
+   var image_url: String
 }
 
 struct RecipeStep: Decodable{
-   
+   var description: String
+   var image_urls: [String]
 }

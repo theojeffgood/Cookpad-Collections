@@ -14,32 +14,19 @@ protocol RecipeManagerProtocol {
 
 struct RecipeManager{
    
-   func loadRecipes<T: Decodable>(collectionId: Int? = nil, of objectType: T.Type) -> [T]{
-      switch objectType {
-      case is Recipe.Type:
-         guard let collectionId = collectionId else { return [] }
-         downloadDataFromCloud(collectionId: collectionId, of: Recipe.self)
-      case is RecipeCollection.Type:
-         downloadDataFromCloud(of: RecipeCollection.self)
-      default:
-         return []
-      }
-      return []
-   }
+   var delegate: RecipeManagerProtocol?
    
-   func downloadDataFromCloud<T: Decodable>(collectionId: Int? = nil, of Type: T.Type) -> [T]{
-      var dataFromCloud: [T] = []
+   func downloadDataFromCloud<T: Decodable>(collectionId: Int? = nil, of Type: T.Type, completion: @escaping ([T]) -> Void){
       NetworkManager.shared.fetchFoodRecipeData(collectionId: collectionId, of: [T].self){ (response) in
          switch response {
          case .success(let recipesFromCloud):
             if !recipesFromCloud.isEmpty{
-               dataFromCloud = recipesFromCloud
+               completion(recipesFromCloud)
             }
+            
          case .failure(let error):
             print("Failed to fetch recipes:", error)
          }
       }
-      return dataFromCloud
    }
-   
 }
