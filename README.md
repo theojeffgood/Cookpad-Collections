@@ -13,7 +13,8 @@ Key features:
 - View great recipes in the collection
 - Find your favorite one & cook it!
 
-![image](https://user-images.githubusercontent.com/26825549/148145459-9e8fb41c-98ef-470b-994d-f22016adee23.png)
+![image](https://user-images.githubusercontent.com/26825549/148145459-9e8fb41c-98ef-470b-994d-f22016adee23.png)![image](https://user-images.githubusercontent.com/26825549/148145550-e79fc753-febf-4224-aed6-af33fdd12e95.png)
+
 
 As this is a beta release, it's missing a few things. For example:
 
