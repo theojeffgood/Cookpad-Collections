@@ -5,6 +5,7 @@ Cookpad Collections is the answer to your question "what should I make for dinne
 - It runs on iOS 14+
 - Optimized for iPhone 13 model screen sizes. But runs on most iPhone & iPad
 - Cocoapods & some image & icons included in the Git. Therefore it runs without further download or configs
+- Be sure to run the app using the .xcworkspace file
  
 Key features:
 
