@@ -12,10 +12,12 @@ class RecipeCollectionCell: UICollectionViewCell {
    
    @IBOutlet weak var recipeCollectionImage: UIImageView!
    @IBOutlet weak var recipeCollectionTitle: UILabel!
+   @IBOutlet weak var recipeCollectionDescription: UILabel!
    
    override func prepareForReuse() {
       super.prepareForReuse()
-      recipeCollectionTitle.text = nil
+      recipeCollectionTitle.text?.removeAll()
+      recipeCollectionDescription.text?.removeAll()
       recipeCollectionImage.image = nil
    }
 }
@@ -23,8 +25,9 @@ class RecipeCollectionCell: UICollectionViewCell {
 //MARK:-- CELL CONFIGURATION
 
 extension RecipeCollectionCell {
-   func configure(with recipeCollection: RecipeCollection) {
-      self.recipeCollectionTitle?.text = recipeCollection.title
+   func configure(title: String, description: String) {
+      self.recipeCollectionTitle?.text = title
+      self.recipeCollectionDescription?.text = description
    }
 }
 

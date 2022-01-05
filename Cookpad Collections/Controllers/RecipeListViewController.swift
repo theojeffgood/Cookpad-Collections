@@ -11,7 +11,6 @@ import Nuke
 class RecipeListViewController: UIViewController {
 
    @IBOutlet weak var recipesList: UICollectionView!
-//   var recipes: [Recipe]?
    var recipeManager: RecipeManager!
    var layoutManager: RecipesLayoutManager!
    var selectedRecipeCollection: RecipeCollection.ID?
@@ -24,8 +23,17 @@ class RecipeListViewController: UIViewController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      navigationController?.setBackButtonTitle(to: "Cuisines")
       setupRecipesList()
       loadRecipes()
+   }
+   
+   func configureCriticalDependencies(layoutManager: RecipesLayoutManager,
+                                      recipeManager: RecipeManager,
+                                      selectedRecipeCollection: RecipeCollection.ID){
+      self.layoutManager = layoutManager
+      self.recipeManager = recipeManager
+      self.selectedRecipeCollection = selectedRecipeCollection
    }
 
    private func setupRecipesList() {
@@ -40,8 +48,13 @@ extension RecipeListViewController{
       recipeManager.downloadDataFromCloud(collectionId: selectedRecipeCollection, of: Recipe.self){ [weak self] recipes in
          guard let self = self else { return }
          
+         let loadingViewController = LoadingViewController()
+         self.add(loadingViewController) // Display loading spinner
+         
          self.navigationItem.title = "\(recipes.count) Recipes"
          self.displayRecipes(recipes)
+         
+         loadingViewController.remove() // Stop & remove loading spinner
       }
    }
    
@@ -73,14 +86,22 @@ extension RecipeListViewController{
 
 extension RecipeListViewController: UICollectionViewDelegate{
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      guard let recipeCollection = dataSource.itemIdentifier(for: indexPath) else { return }
+      collectionView.deselectItem(at: indexPath, animated: true)
+      guard let selectedRecipe = dataSource.itemIdentifier(for: indexPath) else { return }
       
-//      let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//      guard let recipeCardViewController = storyboard.instantiateViewController(withIdentifier: "RecipeDetailViewController") as? RecipeCardViewController else { return }
-//
-//      let imageRequest = ImageRequest(url: URL(string: selectedRecipe.imageUrl)!, processors: NukeManager.shared.resizedImageProcessors)
-//      Nuke.loadImage(with: imageRequest, into: recipeCardViewController.recipeHeaderImageView)
-//
-//      self.navigationController?.pushViewController(recipeCardViewController, animated: true)
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      guard let recipeDetailsViewController = storyboard.instantiateViewController(withIdentifier: "recipeDetailsViewController") as? RecipeDetailsViewController else { return }
+
+      if !selectedRecipe.image_url.isEmpty{
+         let imageRequest = ImageRequest(url: URL(string: selectedRecipe.image_url)!, processors: NukeManager.shared.resizedImageProcessors)
+         Nuke.loadImage(with: imageRequest, into: recipeDetailsViewController.recipeHeaderImageView)
+      } else{
+         recipeDetailsViewController.recipeHeaderImageView.image = UIImage(named: "Recipe Placeholder")
+      }
+      
+      recipeDetailsViewController.layoutManager = self.layoutManager
+      recipeDetailsViewController.usersRecipe = selectedRecipe
+
+      self.navigationController?.pushViewController(recipeDetailsViewController, animated: true)
    }
 }

@@ -7,6 +7,9 @@
 
 import Nuke
 
+// Nuke is a third party library for loading images. Chosen for its ease of use, and small footprint.
+// Details available at https://kean.blog/nuke/home
+
 class NukeManager{
    
    static let shared = NukeManager()
@@ -19,7 +22,7 @@ class NukeManager{
    func setupImageLoadingConfig() {
       DataLoader.sharedUrlCache.diskCapacity = 0
       let pipeline = ImagePipeline {
-         let dataCache = try? DataCache(name: "com.halflemons.recipe-photos.datacache")
+         let dataCache = try? DataCache(name: "com.cookpad-collections.recipe-photos.datacache")
          dataCache?.sizeLimit = 500 * 1024 * 1024
          $0.dataCache = dataCache
          
@@ -34,7 +37,7 @@ class NukeManager{
         placeholder: .scaleAspectFill)
 
       ImageLoadingOptions.shared.contentModes = contentModes
-      ImageLoadingOptions.shared.placeholder = UIImage(named: "Recipe Image Placeholder")
+      ImageLoadingOptions.shared.placeholder = UIImage(named: "Recipe Placeholder")
       ImageLoadingOptions.shared.failureImage = UIImage(named: "Recipe Image Failure")
       ImageLoadingOptions.shared.transition = .fadeIn(duration: 0.3)
    }

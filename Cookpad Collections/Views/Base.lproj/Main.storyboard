@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Recipe Collections-->
+        <!--Choose your Cuisine-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RecipeCollectionsViewController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,26 +24,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b2l-HW-vCJ" userLabel="Recipe Collections">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="113" width="414" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DcY-NC-qQr">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="349" height="503"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipeCollectionsCellIdentifier" id="3jM-Dj-QLq" userLabel="Recipe Collection Cell" customClass="RecipeCollectionCell" customModule="Cookpad_Collections" customModuleProvider="target">
-                                        <rect key="frame" x="32.5" y="0.0" width="349" height="458"/>
+                                        <rect key="frame" x="32.5" y="0.0" width="349" height="503"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jql-RW-uqu">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="458"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="503"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-uK-gXQ" userLabel="Recipe Collection Image">
-                                                    <rect key="frame" x="0.0" y="0.0" width="349" height="285"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="349" height="349"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="bZr-uK-gXQ" secondAttribute="height" multiplier="1.225" id="4uB-3c-5NE"/>
+                                                        <constraint firstAttribute="width" secondItem="bZr-uK-gXQ" secondAttribute="height" id="4uB-3c-5NE"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -52,11 +52,17 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Saq-mn-6l0" userLabel="Recipe Collection Title">
-                                                    <rect key="frame" x="0.0" y="280" width="349" height="178"/>
+                                                    <rect key="frame" x="0.0" y="344" width="349" height="159"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Top Recipes Collection" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Po8-kz-7B7" userLabel="Collection Title">
-                                                            <rect key="frame" x="14" y="15" width="325" height="153"/>
-                                                            <fontDescription key="fontDescription" name="Cinzel-Medium" family="Cinzel" pointSize="22"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" verticalCompressionResistancePriority="751" text="Top Recipes Collection" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Po8-kz-7B7" userLabel="Collection Title">
+                                                            <rect key="frame" x="14" y="45" width="325" height="26.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnT-Gs-LLh" userLabel="Collection Description">
+                                                            <rect key="frame" x="15" y="86.5" width="324" height="27.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -64,9 +70,12 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="Po8-kz-7B7" firstAttribute="leading" secondItem="Saq-mn-6l0" secondAttribute="leading" constant="14" id="B7e-zv-2xt"/>
-                                                        <constraint firstItem="Po8-kz-7B7" firstAttribute="top" secondItem="Saq-mn-6l0" secondAttribute="top" constant="15" id="C1d-KD-4si"/>
+                                                        <constraint firstItem="Po8-kz-7B7" firstAttribute="top" secondItem="Saq-mn-6l0" secondAttribute="top" constant="45" id="C1d-KD-4si"/>
+                                                        <constraint firstItem="BnT-Gs-LLh" firstAttribute="leading" secondItem="Saq-mn-6l0" secondAttribute="leading" constant="15" id="J14-Bh-hqp"/>
+                                                        <constraint firstItem="BnT-Gs-LLh" firstAttribute="top" secondItem="Po8-kz-7B7" secondAttribute="bottom" constant="15" id="RJK-Bz-CTK"/>
                                                         <constraint firstAttribute="trailing" secondItem="Po8-kz-7B7" secondAttribute="trailing" constant="10" id="aPA-gv-JJe"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Po8-kz-7B7" secondAttribute="bottom" constant="10" id="ri5-k4-5By"/>
+                                                        <constraint firstAttribute="bottom" secondItem="BnT-Gs-LLh" secondAttribute="bottom" constant="45" id="fO7-if-KAE"/>
+                                                        <constraint firstAttribute="trailing" secondItem="BnT-Gs-LLh" secondAttribute="trailing" constant="10" id="qz9-ao-YTs"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -85,8 +94,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="Saq-mn-6l0" secondAttribute="bottom" id="grq-TW-IzD"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="349" height="458"/>
+                                        <size key="customSize" width="349" height="503"/>
                                         <connections>
+                                            <outlet property="recipeCollectionDescription" destination="BnT-Gs-LLh" id="tDU-ic-OSl"/>
                                             <outlet property="recipeCollectionImage" destination="bZr-uK-gXQ" id="DBi-l1-frd"/>
                                             <outlet property="recipeCollectionTitle" destination="Po8-kz-7B7" id="bm9-Fx-MUU"/>
                                         </connections>
@@ -100,10 +110,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b2l-HW-vCJ" secondAttribute="bottom" id="G6O-m0-D6d"/>
                             <constraint firstItem="b2l-HW-vCJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bC3-SX-fZa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b2l-HW-vCJ" secondAttribute="trailing" id="frh-Le-3UV"/>
-                            <constraint firstItem="b2l-HW-vCJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jTY-pP-MDV"/>
+                            <constraint firstItem="b2l-HW-vCJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="jTY-pP-MDV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Recipe Collections" largeTitleDisplayMode="always" id="CO3-DG-6qO"/>
+                    <navigationItem key="navigationItem" title="Choose your Cuisine" largeTitleDisplayMode="always" id="CO3-DG-6qO"/>
                     <connections>
                         <outlet property="recipeCollectionsList" destination="b2l-HW-vCJ" id="WUE-Yp-bdm"/>
                         <segue destination="it8-G1-RJv" kind="show" identifier="showRecipesSegue" id="Qgd-ct-ZAd"/>
@@ -213,25 +223,25 @@
         <!--Recipe Details View Controller-->
         <scene sceneID="ukM-ZH-A4v">
             <objects>
-                <viewController id="WaQ-74-JXG" customClass="RecipeDetailsViewController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recipeDetailsViewController" id="WaQ-74-JXG" customClass="RecipeDetailsViewController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yfc-Xs-vV4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="thm-bi-w6U" userLabel="Recipe Details">
-                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dfc-lq-L5S" userLabel="Recipe Details">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="umF-S5-Rbf">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vMO-iQ-io9">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AhC-K8-qdC">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipeDetailsCellIdentifier" id="7RH-Rj-JJa" userLabel="RecipeDetailsCell" customClass="RecipeDetailsCell" customModule="Cookpad_Collections" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DrA-sP-UUd">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="G8I-8r-HcY">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
@@ -242,25 +252,25 @@
                         <viewLayoutGuide key="safeArea" id="G3e-vu-HrR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="G3e-vu-HrR" firstAttribute="trailing" secondItem="thm-bi-w6U" secondAttribute="trailing" id="08Z-t4-dxP"/>
-                            <constraint firstAttribute="bottom" secondItem="thm-bi-w6U" secondAttribute="bottom" id="9S4-aH-vJk"/>
-                            <constraint firstItem="thm-bi-w6U" firstAttribute="leading" secondItem="G3e-vu-HrR" secondAttribute="leading" id="Af3-IU-QEg"/>
-                            <constraint firstItem="thm-bi-w6U" firstAttribute="top" secondItem="G3e-vu-HrR" secondAttribute="top" id="tHQ-eo-AWb"/>
+                            <constraint firstAttribute="bottom" secondItem="Dfc-lq-L5S" secondAttribute="bottom" id="ABr-wn-9Bm"/>
+                            <constraint firstItem="Dfc-lq-L5S" firstAttribute="top" secondItem="yfc-Xs-vV4" secondAttribute="top" id="JuZ-Hr-ssg"/>
+                            <constraint firstItem="G3e-vu-HrR" firstAttribute="trailing" secondItem="Dfc-lq-L5S" secondAttribute="trailing" id="wEr-C8-8k3"/>
+                            <constraint firstItem="Dfc-lq-L5S" firstAttribute="leading" secondItem="G3e-vu-HrR" secondAttribute="leading" id="zMM-pd-7S1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ohn-OT-3QX"/>
                     <connections>
-                        <outlet property="recipeDetailsList" destination="thm-bi-w6U" id="AuH-hG-5iS"/>
+                        <outlet property="recipeDetailsList" destination="Dfc-lq-L5S" id="jqi-8C-YZG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Wb-GD-pBw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2586.9565217391305" y="118.52678571428571"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Nav Bar Controller-->
         <scene sceneID="yRS-dG-XJC">
             <objects>
-                <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" id="3tT-G7-O9H" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" id="3tT-G7-O9H" customClass="CustomNavBarController" customModule="Cookpad_Collections" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="fZY-Gd-1fy">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>

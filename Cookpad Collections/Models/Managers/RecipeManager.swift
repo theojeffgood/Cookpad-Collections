@@ -24,7 +24,7 @@ struct RecipeManager{
                completion(recipesFromCloud)
             }
          case .failure(let error):
-            print("Failed to fetch recipes:", error)
+            print("Failed to fetch \(Type):", error)
          }
       }
    }
