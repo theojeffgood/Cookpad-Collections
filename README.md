@@ -9,10 +9,11 @@ Cookpad Collections is the answer to your question "what should I make for dinne
  
 Key features:
 
-- Scroll through popular recipe collections
-- Pick your favorite collection (aka cuisine)
-- View great recipes in the collection
-- Find your favorite one & cook it!
+- Scroll through popular recipe collections (aka "cuisine" in app lingo)
+- Pick your favorite collection
+- View the great recipes in the collection
+- Find your favorite recipe
+- View the most important details, & cook it!
 
 As this is a beta release, it's missing a few things. For example:
 
@@ -21,7 +22,7 @@ As this is a beta release, it's missing a few things. For example:
 - Handling some special characters that appear in user-generated data
 - Resolve auto-layout warnings
 
-Low hanging fruit for future enhancements: 
+Future enhancements: 
 
 - Dark mode support
 - Landscape mode support
