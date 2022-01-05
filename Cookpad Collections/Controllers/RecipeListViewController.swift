@@ -92,8 +92,12 @@ extension RecipeListViewController: UICollectionViewDelegate{
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       guard let recipeDetailsViewController = storyboard.instantiateViewController(withIdentifier: "recipeDetailsViewController") as? RecipeDetailsViewController else { return }
 
-      let imageRequest = ImageRequest(url: URL(string: selectedRecipe.image_url)!, processors: NukeManager.shared.resizedImageProcessors)
-      Nuke.loadImage(with: imageRequest, into: recipeDetailsViewController.recipeHeaderImageView)
+      if !selectedRecipe.image_url.isEmpty{
+         let imageRequest = ImageRequest(url: URL(string: selectedRecipe.image_url)!, processors: NukeManager.shared.resizedImageProcessors)
+         Nuke.loadImage(with: imageRequest, into: recipeDetailsViewController.recipeHeaderImageView)
+      } else{
+         recipeDetailsViewController.recipeHeaderImageView.image = UIImage(named: "Recipe Placeholder")
+      }
       
       recipeDetailsViewController.layoutManager = self.layoutManager
       recipeDetailsViewController.usersRecipe = selectedRecipe

@@ -37,7 +37,7 @@ class NukeManager{
         placeholder: .scaleAspectFill)
 
       ImageLoadingOptions.shared.contentModes = contentModes
-      ImageLoadingOptions.shared.placeholder = UIImage(named: "Recipe Image Placeholder")
+      ImageLoadingOptions.shared.placeholder = UIImage(named: "Recipe Placeholder")
       ImageLoadingOptions.shared.failureImage = UIImage(named: "Recipe Image Failure")
       ImageLoadingOptions.shared.transition = .fadeIn(duration: 0.3)
    }

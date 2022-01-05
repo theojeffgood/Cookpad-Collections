@@ -51,7 +51,7 @@ extension RecipeCollectionsViewController{
 
          guard let recipeCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeCollectionCell.reuseIdentifier, for: indexPath) as? RecipeCollectionCell else { return UICollectionViewCell() }
 
-         let imageRequest = ImageRequest(url: URL(string: recipeCollection.preview_image_urls.first ?? ""), processors: NukeManager.shared.resizedImageProcessors)
+         let imageRequest = ImageRequest(url: URL(string: recipeCollection.preview_image_urls.first ?? "Recipe Placeholder"), processors: NukeManager.shared.resizedImageProcessors)
          Nuke.loadImage(with: imageRequest, into: recipeCollectionCell.recipeCollectionImage)
          recipeCollectionCell.configure(title: recipeCollection.title, description: recipeCollection.description)
          
