@@ -20,8 +20,8 @@ Step 4. [Register an SSH key in GitHub](#register-ssh-key)
 Step 5. [Clone the repo](#clone-the-repo)  
 Step 6. [Update submodules](#update-submodules)  
 Step 7. [Install JDK](#install-jdk)  
-Step 8. [Setup secrets](#setup-secrets)
-Step 8. [Build the app](#build-app)  
+Step 8. [Setup secrets](#setup-secrets)  
+Step 9. [Build the app](#build-app)  
 
 1. Install the latest version of Xcode from the App Store. Pick the latest major (non-beta) version.<a id="install-xcode"></a>
     1. The version of git on your machine is sufficient. You can use it from the command line, or a graphical client of your choice (e.g. [SourceTree](https://www.sourcetreeapp.com) or [GitKraken](https://www.gitkraken.com) ).
