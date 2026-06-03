@@ -20,9 +20,10 @@ Step 4. [Register an SSH key in GitHub](#register-ssh-key)
 Step 5. [Clone the repo](#clone-the-repo)  
 Step 6. [Update submodules](#update-submodules)  
 Step 7. [Install JDK](#install-jdk)  
-Step 8. [Setup secrets](#setup-secrets)  
+Step 8. [Setup secrets](#setup-secrets)
+Step 8. [Build the app](#build-app)  
 
-1. Install the latest version of Xcode from the App Store. Pick the latest major (non-beta) version. <a id="install-xcode"></a>
+1. Install the latest version of Xcode from the App Store. Pick the latest major (non-beta) version.<a id="install-xcode"></a>
     1. The version of git on your machine is sufficient. You can use it from the command line, or a graphical client of your choice (e.g. [SourceTree](https://www.sourcetreeapp.com) or [GitKraken](https://www.gitkraken.com) ).
     2. Post in the `#team-ios` Slack channel. Ask to be added to AllTrails' dev team. Specify that `Access to Certificates, Identifiers & Profiles` permissions must be checked in App Store Connect.
 
@@ -66,27 +67,27 @@ Step 8. [Setup secrets](#setup-secrets)
         2. Go to Settings -> Notifications.
         3. Set your Default Notifications email to your AllTrails email.
 
-4. <a id="register-ssh-key"></a>Register an SSH key in GitHub for your development machine. (Optionally, this can also be done [manually](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh))
+4. Register an SSH key in GitHub for your development machine. (Optionally, this can also be done [manually](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh))<a id="register-ssh-key"></a>
     1. Install the GitHub CLI with `brew install gh` in your terminal.
     2. Run `gh auth login`.
     3. Follow the prompts. Set SSH as your preferred protocol (for the rest, defaults will do)
     4. Authorize the newly created SSH with SSO (cloning will fail otherwise). This can be done on [github.com](http://github.com) -> Your Profile Icon -> Settings -> SSH & GPG Keys -> Authentication Keys -> Configure SSO beside the AllTrails key
 
-5. <a id="clone-the-repo"></a>Clone the [alltrails_ios_3](https://github.com/alltrails/alltrails_ios_3) repository from GitHub.
+5. Clone the [alltrails_ios_3](https://github.com/alltrails/alltrails_ios_3) repository from GitHub.<a id="clone-the-repo"></a>
 
-6. <a id="update-submodules"></a>From the `alltrails_ios_3` folder in your terminal, run:
+6. From the `alltrails_ios_3` folder in your terminal, run:<a id="update-submodules"></a>
     1. `git submodule update --init`. This will clone our submodule repos.
     2. Our submodules update automatically. They don't need manual updates (`git pull`). This includes our Analytics events repo [Analytics Definitions](https://github.com/alltrails/alltrails_analytics_definition). Our design tokens repo [Denali](https://github.com/alltrails/denali). And the [Kotlin multiplatform](https://github.com/alltrails/alltrails_kmp) submodule.
 
-7. <a id="install-jdk"></a>JDK Installations
+7. JDK Installations<a id="install-jdk"></a>
     1. JDK installation required to build ATUtilKit library. Run scripts/install_kmp_dependencies.sh
 
-8. <a id="setup-secrets"></a>Setup Secrets
+8. Setup Secrets<a id="setup-secrets"></a>
     1. AllTrails secrets (API keys, tokens, etc) live in 1password. You need 1password CLI and developer mode in order to sync your secrets and build the app. Follow these steps [1password CLI setup](https://developer.1password.com/docs/cli/get-started/).
     2. You need access to the "Mobile" vault in 1password. If you don't already, ask an admin for access.
     3. Run this script in your shell: `scripts/secret_manager_sync.sh`. This initiates a sync via `secret_manager`. It copies secrets from 1password into your local mac keychain. There's a build phase in Xcode that then loads secrets from your kechain into the AllTrails iOS app. The script might ask you to authenticate via 1password. Do it (ensure the AllTrails account is selected). You will be prompted to authenticate your keychain. Enter your mac password. This syncs the secrets into your mac keychain so you don't have to enter your password every time you build. See [secret_manager docs](https://github.com/alltrails/mobile_util/blob/main/secret_manager/README.md) for more details. You will need to run this any time a new secret is added.
 
-9. Build the App
+9. Build the App<a id="build-app"></a>
     1. Open `AllTrails.xcodeproj` and try to build & run the app. Do this for the simulator and your tethered device (must be connected by wire). If you run into issues just ask for help!
     2. On your first time building, you may be prompted for your mac password. This unlocks the keychain so Xcode can access secrets. Enter your password & click "Always allow".
 
