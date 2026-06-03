@@ -22,16 +22,16 @@ Step 6. [Update submodules](#update-submodules)
 Step 7. [Install JDK](#install-jdk)  
 Step 8. [Setup secrets](#setup-secrets)  
 
-1. <a id="install-xcode"></a>Install the latest version of Xcode from the App Store. Pick the latest major (non-beta) version.
+1. Install the latest version of Xcode from the App Store. Pick the latest major (non-beta) version. <a id="install-xcode"></a>
     1. The version of git on your machine is sufficient. You can use it from the command line, or a graphical client of your choice (e.g. [SourceTree](https://www.sourcetreeapp.com) or [GitKraken](https://www.gitkraken.com) ).
     2. Post in the `#team-ios` Slack channel. Ask to be added to AllTrails' dev team. Specify that `Access to Certificates, Identifiers & Profiles` permissions must be checked in App Store Connect.
 
-2. <a id="install-homebrew"></a>Install the [Homebrew](https://brew.sh) package manager.
+2. Install the [Homebrew](https://brew.sh) package manager.<a id="install-homebrew"></a>
     1. Follow the installation directions on the website
     2. Follow the instructions at the end of the installation to finish integrating with your shell (should be zsh)
     3. Run `brew doctor` and follow any instructions. Repeat this process until you see “Your system is ready to brew”
 
-3. <a id="create-personal-access-token"></a>Create a Personal Access Token in GitHub
+3. Create a Personal Access Token in GitHub<a id="create-personal-access-token"></a>
     1. **Navigate to GitHub:** Visit [Github's](https://github.com/) website.
     2. **Access Developer Settings:**
         * Click on your profile icon in the top right corner.
